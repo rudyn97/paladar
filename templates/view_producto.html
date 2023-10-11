@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Inicio</th>
+            <th>Entrada</th>
+            <th>Final</th>
+            <th>Ventas</th>
+            <th>Precio</th>
+            <th>Importe</th>
+        </tr>
+        {% for p in productos %}
+        <tr>
+                <td style="text-align: left;">{{p.nombre}}</td>
+                <td>{{p.inicio}}</td>
+                <td>{{p.entrada}}</td>
+                <td>{{p.final}}</td>
+                <td>{{p.venta}}</td>
+                <td>{{p.pvp}}</td>
+                <td>{{p.importe}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{importe_total}}</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <form action="{% url 'app:reiniciar_datos' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">
+        Vaciar datos
+    </button>
+    </form>
+
+<style>
+    table, td, th{
+        border: 1px solid;
+    }
+    table{
+        border-collapse: collapse;
+        text-align: center;
+        width: 100%;
+    }
+
+</style>
+
+</body>
+</html>
